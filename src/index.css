@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Skill Share Hub Design System - Dark Theme with Yellow Accents */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Dark Theme Base Colors */
+    --background: 220 13% 10%;           /* Deep gray/charcoal #181A20 */
+    --foreground: 210 40% 98%;           /* White text */
+    
+    /* Card and Surface Colors */
+    --card: 220 13% 12%;                 /* Slightly lighter than background */
+    --card-foreground: 210 40% 98%;      /* White text on cards */
+    
+    /* Popover and Modal Colors */
+    --popover: 220 13% 12%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Primary - Light Yellow Accent */
+    --primary: 48 100% 50%;              /* Bright Yellow #FFD600 */
+    --primary-foreground: 220 13% 10%;   /* Dark text on yellow */
+    
+    /* Secondary - Muted Gray */
+    --secondary: 220 13% 18%;            /* Lighter gray for secondary elements */
+    --secondary-foreground: 210 20% 80%; /* Light gray text */
+    
+    /* Muted - Subtle Gray */
+    --muted: 220 13% 15%;                /* Subtle background */
+    --muted-foreground: 210 20% 65%;     /* Muted gray text #B0B9C6 */
+    
+    /* Accent - Yellow Variants */
+    --accent: 48 100% 50%;               /* Same as primary */
+    --accent-foreground: 220 13% 10%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;            /* Red for errors */
+    --destructive-foreground: 210 40% 98%;
+    
+    --success: 142 76% 36%;              /* Green for success */
+    --success-foreground: 210 40% 98%;
+    
+    --warning: 38 92% 50%;               /* Orange for warnings */
+    --warning-foreground: 220 13% 10%;
+    
+    /* Interactive Elements */
+    --border: 220 13% 20%;               /* Subtle borders */
+    --input: 220 13% 18%;                /* Input backgrounds */
+    --ring: 48 100% 50%;                 /* Yellow focus rings */
+    
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(48 100% 50%), hsl(45 100% 60%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 13% 10%), hsl(220 13% 15%));
+    --gradient-card: linear-gradient(135deg, hsl(220 13% 12%), hsl(220 13% 16%));
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(220 13% 5% / 0.1);
+    --shadow-md: 0 4px 12px hsl(220 13% 5% / 0.15);
+    --shadow-lg: 0 8px 25px hsl(220 13% 5% / 0.2);
+    --shadow-xl: 0 16px 40px hsl(220 13% 5% / 0.25);
+    --shadow-glow: 0 0 20px hsl(48 100% 50% / 0.3);
+    
+    /* Spacing and Layout */
+    --radius: 0.75rem;
+
+    /* Sidebar Colors for Dark Theme */
+    --sidebar-background: 220 13% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 48 100% 50%;
+    --sidebar-primary-foreground: 220 13% 10%;
+    --sidebar-accent: 220 13% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 48 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Custom Button Variants */
+  .btn-glow {
+    @apply bg-primary text-primary-foreground hover:shadow-[var(--shadow-glow)] transition-all duration-300;
+  }
+  
+  .btn-outline-glow {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-glow)] transition-all duration-300;
+  }
+  
+  /* Card Styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-lg)];
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+  
+  /* Gradient Backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in-up {
+    @apply animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0;
+  }
+  
+  .animate-float {
+    @apply animate-[float_3s_ease-in-out_infinite];
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Scrollbar Styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 3px;
+  }
+}
+
+/* Custom Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
